@@ -53,6 +53,9 @@
       const h=card.querySelector('h3'), p=card.querySelector('p');
       if(h)h.textContent=item.title; if(p)p.textContent=item.text;
     });
+    document.querySelectorAll('[data-admin-block^="custom-"]').forEach(card => {
+      if (!config.projects.some(p => p.id === card.dataset.adminBlock)) card.remove();
+    });
     config.projects.filter(p=>p.id.startsWith('custom-')).forEach(item=>{
       let card=document.querySelector('[data-admin-block="'+CSS.escape(item.id)+'"]');
       if(!card) {

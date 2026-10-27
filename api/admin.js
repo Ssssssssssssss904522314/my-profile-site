@@ -84,7 +84,6 @@ module.exports = async (req, res) => {
       return json(res, 200, { ok: true }, { "Set-Cookie": "site_admin=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0" });
     }
     if (body.action === "reset") {
-      await kv("del", "site-config");
       const base = process.env.KV_REST_API_URL;
       const token = process.env.KV_REST_API_TOKEN;
       if (base && token) await fetch(`${base.replace(/\/$/, "")}/del/site-config`, { headers: { Authorization: `Bearer ${token}` } });

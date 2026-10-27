@@ -97,7 +97,30 @@
     </section>
   </main>
 
-  <footer class="footer wrap"><a class="brand footer-brand" href="#top"><span class="brand-mark">✳</span><span>MY SPACE<span class="brand-dot">.</span></span></a><span>Сделано с интересом к технологиям <span class="footer-star">✦</span></span><a href="#top" class="back-top">Наверх ↑</a></footer>
+  <footer class="footer wrap"><a class="brand footer-brand" href="#top"><span class="brand-mark">✳</span><span>MY SPACE<span class="brand-dot">.</span></span></a><span>Сделано с интересом к технологиям <span class="footer-star">✦</span></span><a href="#top" class="back-top">Наверх ↑</a><button class="admin-trigger" id="admin-trigger" type="button">Админ-панель</button></footer>
+  <div class="admin-overlay" id="admin-overlay" hidden>
+    <section class="admin-box" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+      <button class="admin-close" id="admin-close" type="button" aria-label="Закрыть">×</button>
+      <div id="admin-login">
+        <span class="section-index">ЗАКРЫТАЯ ЗОНА</span><h2 id="admin-title">Вход в админ-панель</h2>
+        <p class="admin-help">Введите код доступа.</p>
+        <form id="admin-login-form"><label for="admin-code">Код доступа</label><input id="admin-code" type="password" inputmode="numeric" autocomplete="current-password" required><button class="button button-primary" type="submit">Войти <span>→</span></button><p id="admin-error" class="admin-error" aria-live="polite"></p></form>
+      </div>
+      <div id="admin-tools" hidden>
+        <span class="section-index">УПРАВЛЕНИЕ СТРАНИЦЕЙ</span><h2>Настройки сайта</h2>
+        <p class="admin-help">Изменения сохраняются в этом браузере и видны только здесь.</p>
+        <form id="admin-settings-form" class="admin-form">
+          <label for="admin-headline">Заголовок</label><input id="admin-headline" type="text" maxlength="100">
+          <label for="admin-intro">Текст о себе</label><textarea id="admin-intro" rows="3" maxlength="500"></textarea>
+          <label for="admin-telegram">Ссылка на Telegram</label><input id="admin-telegram" type="url" placeholder="https://t.me/username">
+          <label for="admin-github">Ссылка на GitHub</label><input id="admin-github" type="url" placeholder="https://github.com/username">
+          <div class="admin-actions"><button class="button button-primary" type="submit">Сохранить</button><button class="button button-ghost" id="admin-reset" type="button">Сбросить</button></div>
+          <p id="admin-status" class="admin-status" aria-live="polite"></p>
+        </form>
+      </div>
+      <p class="admin-security-note">Важно: это клиентская панель без серверной авторизации. Не используй её для секретных данных.</p>
+    </section>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@
 
     <section id="about" class="section reveal">
       <div class="section-heading"><span class="section-index">01 / ЗНАКОМСТВО</span><h2>Немного <span class="gradient-text">обо мне</span></h2></div>
-      <div class="about-panel">
+      <div class="about-panel" data-admin-block="about">
         <div class="about-icon">⌘</div>
         <div><h3>Люблю создавать новое</h3><p>Мне интересно разрабатывать сайты, ботов и приложения, продумывать интерфейсы и пробовать новые технологии. Эта страница — небольшая точка входа в мои проекты и идеи.</p><p class="muted">Сайт будет пополняться по мере появления новых работ.</p></div>
       </div>
@@ -55,21 +55,21 @@
     <section id="projects" class="section reveal">
       <div class="section-heading"><span class="section-index">02 / ЧТО Я ДЕЛАЮ</span><h2>Мои <span class="gradient-text">проекты</span></h2></div>
       <div class="project-grid">
-        <article class="project-card featured">
+        <article class="project-card featured" data-admin-block="project-1">
           <div class="project-top"><span class="project-icon">E</span><span class="project-status"><i></i> В разработке</span></div>
           <h3>EKOOOL Messenger</h3>
           <p>Идея собственного мессенджера с чатами, профилями и дополнительными цифровыми возможностями.</p>
           <div class="tags"><span>Мессенджер</span><span>Web / App</span></div>
           <a class="text-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">Исходный код <span>↗</span></a>
         </article>
-        <article class="project-card">
+        <article class="project-card" data-admin-block="project-2">
           <div class="project-top"><span class="project-icon purple">✳</span><span class="project-status"><i></i> В разработке</span></div>
           <h3>Telegram-боты</h3>
           <p>Боты для управления чатами, автоматизации задач и поиска информации.</p>
           <div class="tags"><span>Telegram</span><span>Автоматизация</span></div>
           <a class="text-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">Мои репозитории <span>↗</span></a>
         </article>
-        <article class="project-card">
+        <article class="project-card" data-admin-block="project-3">
           <div class="project-top"><span class="project-icon blue">⌁</span><span class="project-status"><i></i> Эксперименты</span></div>
           <h3>Веб-проекты</h3>
           <p>Сайты, интерфейсы и небольшие инструменты — от идеи до первой версии.</p>
@@ -80,7 +80,7 @@
       <p class="small-note">Названия и описания можно легко изменить в файле <code>index.html</code>. Ссылки на проекты пока демонстрационные.</p>
     </section>
 
-    <section class="quote-section reveal">
+    <section class="quote-section reveal" data-admin-block="quote">
       <span class="quote-mark">“</span>
       <p>Большие проекты начинаются<br>с маленькой идеи.</p>
       <span class="quote-caption">В ПРОЦЕССЕ СОЗДАНИЯ</span>
@@ -103,22 +103,37 @@
       <button class="admin-close" id="admin-close" type="button" aria-label="Закрыть">×</button>
       <div id="admin-login">
         <span class="section-index">ЗАКРЫТАЯ ЗОНА</span><h2 id="admin-title">Вход в админ-панель</h2>
-        <p class="admin-help">Введите код доступа.</p>
+        <p class="admin-help">Введи код администратора.</p>
         <form id="admin-login-form"><label for="admin-code">Код доступа</label><input id="admin-code" type="password" inputmode="numeric" autocomplete="current-password" required><button class="button button-primary" type="submit">Войти <span>→</span></button><p id="admin-error" class="admin-error" aria-live="polite"></p></form>
       </div>
       <div id="admin-tools" hidden>
-        <span class="section-index">УПРАВЛЕНИЕ СТРАНИЦЕЙ</span><h2>Настройки сайта</h2>
-        <p class="admin-help">Изменения сохраняются в этом браузере и видны только здесь.</p>
+        <span class="section-index">УПРАВЛЕНИЕ САЙТОМ</span><h2>Настройки сайта</h2>
+        <p class="admin-help">Настройки публикуются для всех посетителей.</p>
         <form id="admin-settings-form" class="admin-form">
-          <label for="admin-headline">Заголовок</label><input id="admin-headline" type="text" maxlength="100">
-          <label for="admin-intro">Текст о себе</label><textarea id="admin-intro" rows="3" maxlength="500"></textarea>
+          <label for="admin-headline">Главный заголовок</label><input id="admin-headline" type="text" maxlength="120">
+          <label for="admin-intro">Коротко обо мне</label><textarea id="admin-intro" rows="3" maxlength="600"></textarea>
           <label for="admin-telegram">Ссылка на Telegram</label><input id="admin-telegram" type="url" placeholder="https://t.me/username">
           <label for="admin-github">Ссылка на GitHub</label><input id="admin-github" type="url" placeholder="https://github.com/username">
-          <div class="admin-actions"><button class="button button-primary" type="submit">Сохранить</button><button class="button button-ghost" id="admin-reset" type="button">Сбросить</button></div>
+          <div class="admin-actions"><button class="button button-primary" type="submit">Сохранить настройки</button></div>
           <p id="admin-status" class="admin-status" aria-live="polite"></p>
         </form>
+        <div class="admin-divider"></div>
+        <h3>Редактор блоков</h3>
+        <p class="admin-help">Нажми «Выбрать блок», затем выбери на странице карточку проекта или текстовый блок — он подсветится и откроется для редактирования.</p>
+        <div class="admin-actions"><button class="button button-primary" id="admin-pick-block" type="button">Выбрать блок на странице</button><button class="button button-ghost" id="admin-add-project" type="button">＋ Добавить проект</button></div>
+        <div class="admin-actions"><button class="button button-ghost" id="admin-reset" type="button">Сбросить настройки</button><button class="button button-ghost" id="admin-logout" type="button">Выйти</button></div>
       </div>
-      <p class="admin-security-note">Важно: это клиентская панель без серверной авторизации. Не используй её для секретных данных.</p>
+      <div id="admin-block-editor" hidden>
+        <span class="section-index">РЕДАКТОР БЛОКА</span><h2 id="admin-block-heading">Изменить блок</h2>
+        <p class="admin-help">Измени название и содержание выбранного блока или удали его со страницы.</p>
+        <form id="admin-block-form" class="admin-form">
+          <label for="admin-block-title">Название</label><input id="admin-block-title" type="text" maxlength="100">
+          <label for="admin-block-text">Текст / описание</label><textarea id="admin-block-text" rows="5" maxlength="1000"></textarea>
+          <div class="admin-actions"><button class="button button-primary" type="submit">Сохранить блок</button><button class="button button-ghost" id="admin-delete-block" type="button">Удалить блок</button><button class="button button-ghost" id="admin-back" type="button">Назад</button></div>
+          <p id="admin-block-status" class="admin-status" aria-live="polite"></p>
+        </form>
+      </div>
+      <p class="admin-security-note">Вход проверяется на сервере. Для работы нужны переменные окружения и хранилище Vercel KV/Upstash.</p>
     </section>
   </div>
   <script src="script.js"></script>
